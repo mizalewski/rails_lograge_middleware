@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.name        = 'rails_lograge_middleware'
-  s.version     = '1.0.0'
+  s.version     = '1.0.0.1'
   s.summary     = 'Rails middleware for Lograge'
   s.description = 'Rails middleware for Lograge with support to log exceptions from Rails and ActiveJobs'
   s.authors     = ['Michał Zalewski']
   s.email       = 'michal@mzalewski.net'
-  s.homepage    = 'http://rubygems.org/gems/lograge_rails_middleware'
+  s.homepage    = 'https://github.com/mizalewski/rails_lograge_middleware'
   s.license     = 'MIT'
 
   s.files = `git ls-files lib`.split("\n")
