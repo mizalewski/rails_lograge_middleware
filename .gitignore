@@ -1,0 +1,8 @@
+/.bundle
+
+.byebug_history
+
+# IDE
+/.idea/
+
+coverage/
