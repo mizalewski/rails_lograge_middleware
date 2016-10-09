@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files lib`.split("\n")
 
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec', '~> 3.5'
 
   s.add_runtime_dependency 'activesupport', '>= 4', '< 5.1'
   s.add_runtime_dependency 'railties',      '>= 4', '< 5.1'
