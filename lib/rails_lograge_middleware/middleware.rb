@@ -32,10 +32,10 @@ module RailsLogrageMiddleware
       entry[:message] = "Error on #{entry[:path]} (#{entry[:controller]}##{entry[:action]}) #{exception.to_s}"
       entry[:exception] = "#{exception.to_s} at #{exception.backtrace.first.strip}"
 
-      return unless entry
-
-      custom_options = Rails.configuration.rails_lograge_middleware.custom_options.call(exception, env, request)
-      entry.merge! custom_options
+      if Rails.configuration.rails_lograge_middleware.custom_options
+        custom_options = Rails.configuration.rails_lograge_middleware.custom_options.call(exception, env, request)
+        entry.merge! custom_options
+      end
 
       Lograge.logger.presence.error Rails.configuration.lograge.formatter.call(entry)
     end

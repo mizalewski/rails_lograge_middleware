@@ -5,7 +5,7 @@ Rails middleware for Lograge with support to log exceptions from Rails and Activ
 
 Logs:
 * Rails exceptions with more information than pure Lograge. You can add custom fields, which will be logged on exception (user, IP, full exception backtrace etc.).
-* Exceptions occurred during running jobs on ActiveJob (Rails 4.2+) - WIP
+* Exceptions occurred during running jobs on ActiveJob (Rails 4.2+)
 
 # Installation
 
@@ -31,14 +31,14 @@ Rails.configuration.tap do |config|
     # Example of logging remote IP, request ID, params and current logged user
     #
     # == Parameters:
-    # exception::
+    # exception:
     #   Occurred exception
     # env:
     #   Environment variables hash with request data
     # request:
     #   Request sent to application wrapped in Rack::Request
     #
-    # == Returns
+    # == Returns:
     # Hash with elements to write to log
     #
 
@@ -57,8 +57,32 @@ Rails.configuration.tap do |config|
     end
     options
   end
+  
+  config.rails_lograge_middleware.active_job_custom_options = lambda do |exception, job|
+    # Examples of logging ActiveJob arguments
+    #
+    # == Parameters:
+    # exception:
+    #   Occurred exception
+    # job:
+    #   ActiveJob instance, which crashed
+    #
+    # == Returns:
+    # Hash with elements to write to log
+    #
+    
+    options = {
+        arguments: job.arguments
+    }
+    options
+  end
 end
 ```
 References:
 
 [Rack::Request](http://www.rubydoc.info/gems/rack/Rack/Request)
+
+# Changes
+
+* 1.1.0 - Added ActiveJob exceptions logging
+* 1.0.0 - Initial version with requests exception logging
