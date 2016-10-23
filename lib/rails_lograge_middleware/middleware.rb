@@ -25,7 +25,7 @@ module RailsLogrageMiddleware
       entry = {
           method: request.request_method,
           path: request.path,
-          format: env['action_dispatch.request.formats'][0].try(:symbol),
+          format: get_format(env),
           controller: env['action_dispatch.request.path_parameters'][:controller],
           action: env['action_dispatch.request.path_parameters'][:action]
       }
@@ -38,6 +38,13 @@ module RailsLogrageMiddleware
       end
 
       Lograge.logger.presence.error Rails.configuration.lograge.formatter.call(entry)
+    end
+
+    def get_format(env)
+      formats = env['action_dispatch.request.formats']
+      if formats.is_a? Array
+        formats[0].try(:symbol)
+      end
     end
   end
 end
