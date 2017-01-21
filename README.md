@@ -1,5 +1,6 @@
 # A [Lograge](https://github.com/roidrage/lograge) extensions for Rails
 [![Dependency Status](https://gemnasium.com/mizalewski/rails_lograge_middleware.svg)](https://gemnasium.com/mizalewski/rails_lograge_middleware)
+[![ghit.me](https://ghit.me/badge.svg?repo=mizalewski/rails_lograge_middleware)](https://ghit.me/repo/mizalewski/rails_lograge_middleware)
 
 Rails middleware for Lograge with support to log exceptions from Rails and ActiveJobs.
 
